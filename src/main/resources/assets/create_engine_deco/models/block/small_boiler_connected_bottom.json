@@ -1,5 +1,6 @@
 {
 	"credit": "Made with Blockbench",
+	"render_type": "minecraft:cutout",
 	"textures": {
 		"0": "create_engine_deco:block/fluid_tank",
 		"1": "create_engine_deco:block/small_boiler_insert_connected",
