@@ -1,4 +1,4 @@
-package net.notogt.create_engine_deco.block.custom;
+package net.notogt.create_engine_deco.block.decoration;
 
 import com.simibubi.create.AllItems;
 import net.minecraft.core.BlockPos;

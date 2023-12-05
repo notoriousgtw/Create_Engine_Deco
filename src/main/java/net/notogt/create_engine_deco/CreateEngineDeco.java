@@ -1,6 +1,7 @@
 package net.notogt.create_engine_deco;
 
 import com.mojang.logging.LogUtils;
+import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -34,7 +35,7 @@ public class CreateEngineDeco
         EngineDecoItems.register(modEventBus);
 
         // Register blocks
-        EngineDecoBlocks.register(modEventBus);
+        EngineDecoBlocks.register();
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -42,24 +43,16 @@ public class CreateEngineDeco
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-        // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
-
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
+
+    public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MOD_ID);
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
     }
 
-    // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event)
-    {
-        if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-            event.accept(EngineDecoBlocks.SMALL_BOILER);
-        }
-    }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
